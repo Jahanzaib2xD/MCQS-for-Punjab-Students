@@ -175,16 +175,48 @@ function updateCount(){
  $("startBtn").disabled = n===0;
 }
 
+function shuffleArray(items) {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+
 function startPractice(){
- questions = getQuestions().slice();
- for(let i=questions.length-1;i>0;i--){
-  const j=Math.floor(Math.random()*(i+1));
-  [questions[i],questions[j]]=[questions[j],questions[i]];
+ const pool = getQuestions();
+
+ if(pool.length === 0){
+  alert("No questions available for this selection.");
+  return;
  }
- index=0;score=0;
+
+ const difficulty = $("difficultySelect").value;
+
+ const targetCount = {
+  easy: 50,
+  medium: 75,
+  hard: 100
+ };
+
+ const shuffled = shuffleArray(pool);
+
+ questions = difficulty === "all"
+  ? shuffled
+  : shuffled.slice(0, targetCount[difficulty] || shuffled.length);
+
+ index = 0;
+ score = 0;
+ answered = false;
+
  $("resultPanel").classList.add("hidden");
  $("quizPanel").classList.remove("hidden");
- $("scoreLabel").textContent="Score: 0";
+ $("scoreLabel").textContent = "Score: 0";
+
  renderQuestion();
 }
 
