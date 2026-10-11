@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+function renderChapters() {
+  const sel = $("chapter");
+  const matching = bank.filter(q => q.s === subject);
+  const keys = [...new Set(matching.map(q => q.c))];
+  const wanted = chapter;
+
+  sel.innerHTML =
+    `<option value="all">${esc(tr("allChapters"))}</option>` +
+    keys.map(k =>
+      `<option value="${k}">${esc(tr("chapters")[k] || k)}</option>`
+    ).join("");
+
+  chapter = keys.includes(wanted) ? wanted : "all";
+  sel.value = chapter;
+
+  const count = matching.filter(
+    q => chapter === "all" || q.c === chapter
+  ).length;
+
+  $("questionCount").textContent =
+    count + " " +
+    (lang === "en"
+      ? "sample questions available"
+      : "نمونہ سوالات دستیاب ہیں");
+
+  $("startBtn").disabled = count === 0;
+}
+</html>
