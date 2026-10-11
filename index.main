@@ -2,955 +2,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Punjab Board MCQs | Classes 9–12</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f1f7f2;
-      color: #24352a;
-    }
-
-    header {
-      background: #08783e;
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-    }
-
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 16px;
-    }
-
-    main {
-      width: 92%;
-      max-width: 850px;
-      margin: 25px auto;
-    }
-
-    .card {
-      background: white;
-      padding: 24px;
-      margin-bottom: 20px;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-    }
-
-    h2 {
-      color: #08783e;
-      margin-top: 0;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin: 16px 0 7px;
-    }
-
-    select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd8ce;
-      border-radius: 8px;
-      font-size: 16px;
-      background: white;
-    }
-
-    button {
-      border: none;
-      border-radius: 8px;
-      padding: 12px 18px;
-      margin-top: 15px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #08783e;
-      color: white;
-    }
-
-    button:hover {
-      background: #065e30;
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
-
-    .secondary {
-      background: #e5eee7;
-      color: #174b2d;
-    }
-
-    .secondary:hover {
-      background: #d3e2d6;
-    }
-
-    .option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: #f3f7f4;
-      color: #24352a;
-      border: 1px solid #d8e4da;
-      margin: 10px 0;
-    }
-
-    .option:hover {
-      background: #e3f2e7;
-    }
-
-    .option.correct {
-      background: #d8f5df;
-      border: 2px solid #16833f;
-    }
-
-    .option.wrong {
-      background: #ffe2e2;
-      border: 2px solid #cf3333;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .muted {
-      color: #617066;
-      font-size: 14px;
-    }
-
-    .status {
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .easy {
-      color: #16833f;
-    }
-
-    .medium {
-      color: #b87800;
-    }
-
-    .hard {
-      color: #c52c2c;
-    }
-
-    .progress {
-      height: 8px;
-      background: #e4ebe5;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 15px 0;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: #08783e;
-      transition: width 0.2s;
-    }
-
-    footer {
-      text-align: center;
-      padding: 22px;
-      color: #617066;
-      font-size: 14px;
-    }
-
-    @media (max-width: 500px) {
-      header h1 {
-        font-size: 26px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Punjab Board MCQs</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f8f4;color:#183329}
+header{background:#087f5b;color:white;text-align:center;padding:30px 15px}
+header h1{margin:0 0 8px}
+main{max-width:850px;width:92%;margin:25px auto}
+.card{background:white;padding:22px;margin-bottom:18px;border-radius:14px;border:1px solid #dce9e1}
+h2{margin-top:0}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:bold}
+select{display:block;width:100%;padding:11px;margin-top:6px;border:1px solid #cbdcd1;border-radius:8px;background:white;font-size:16px}
+button{padding:12px 16px;border:0;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold}
+.primary{background:#087f5b;color:white}
+.secondary{background:#e5f2e9;color:#07543f}
+button:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#questionCount,.note{color:#60736a}
+.hidden{display:none!important}
+#questionText{font-size:20px;font-weight:bold;margin:20px 0}
+#options{display:grid;gap:10px}
+.option{background:white;border:1px solid #cbdcd1;text-align:left;font-weight:normal}
+.option.correct{background:#dff6e5;border:1px solid green}
+.option.wrong{background:#ffe9e7;border:1px solid red}
+#feedback{padding:12px;margin-top:12px;border-radius:8px}
+.good{background:#dff6e5;color:#155c2a}
+.bad{background:#ffe9e7;color:#8b2923}
+.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#60736a}
+footer{text-align:center;color:#60736a;padding:20px}
+@media(max-width:550px){.filters{grid-template-columns:1fr}.card{padding:16px}}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <h1>Punjab Board MCQs</h1>
-    <p>Practice MCQs for Classes 9, 10, 11 and 12</p>
-  </header>
-
-  <main>
-
-    <section class="card" id="setup">
-      <h2>Choose Your Practice</h2>
-      <p class="muted">Select your class, subject, chapter and difficulty level.</p>
-
-      <label for="classSelect">Class</label>
-      <select id="classSelect">
-        <option value="9">Class 9</option>
-        <option value="10">Class 10</option>
-        <option value="11">Class 11</option>
-        <option value="12">Class 12</option>
-      </select>
-
-      <label for="subjectSelect">Subject</label>
-      <select id="subjectSelect"></select>
-
-      <label for="chapterSelect">Chapter</label>
-      <select id="chapterSelect">
-        <option value="all">All Chapters</option>
-      </select>
-
-      <label for="difficultySelect">Difficulty Level</label>
-      <select id="difficultySelect">
-        <option value="all">All Difficulties</option>
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
-
-      <p id="questionCount" class="muted"></p>
-
-      <button id="startBtn">Start Quiz</button>
-    </section>
-
-    <section class="card hidden" id="quiz">
-      <p id="questionNumber" class="muted"></p>
-
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-
-      <p>
-        Difficulty:
-        <strong id="difficultyLabel"></strong>
-      </p>
-
-      <h2 id="questionText"></h2>
-
-      <div id="options"></div>
-
-      <p id="feedback" class="status" aria-live="polite"></p>
-      <p id="explanation" class="muted"></p>
-
-      <button id="nextBtn" disabled>Next Question</button>
-      <button id="quitBtn" class="secondary">Back to Settings</button>
-    </section>
-
-    <section class="card hidden" id="result">
-      <h2>Quiz Completed!</h2>
-      <p id="scoreText"></p>
-      <p id="resultMessage"></p>
-      <button id="retryBtn">Try Again</button>
-      <button id="settingsBtn" class="secondary">Choose Another Quiz</button>
-    </section>
-
-  </main>
-
-  <footer>
-    Punjab Board MCQs Practice Website
-  </footer>
-
-  <script>
-    // SAMPLE QUESTIONS
-    // Add more questions inside this list whenever you want.
-
-    const bank = [
-      // CLASS 9 - MATHEMATICS
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Real Numbers",
-        difficulty: "easy",
-        q: "Which of the following is a rational number?",
-        options: ["√2", "π", "3/4", "√3"],
-        answer: 2,
-        explanation: "3/4 is rational because it can be written as a fraction of two integers."
-      },
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Real Numbers",
-        difficulty: "medium",
-        q: "What is the square of 15?",
-        options: ["125", "200", "225", "250"],
-        answer: 2,
-        explanation: "15 × 15 = 225."
-      },
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Real Numbers",
-        difficulty: "hard",
-        q: "What is the value of √144 + √81?",
-        options: ["15", "18", "21", "25"],
-        answer: 0,
-        explanation: "√144 = 12 and √81 = 9, so the sum is 21. Correct answer: option C."
-      },
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Algebra",
-        difficulty: "easy",
-        q: "Simplify: 2x + 3x.",
-        options: ["5", "5x", "6x", "x"],
-        answer: 1,
-        explanation: "Add the coefficients: 2x + 3x = 5x."
-      },
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Algebra",
-        difficulty: "medium",
-        q: "If x + 7 = 12, what is x?",
-        options: ["3", "4", "5", "7"],
-        answer: 2,
-        explanation: "Subtract 7 from both sides: x = 12 − 7 = 5."
-      },
-      {
-        grade: "9",
-        subject: "Mathematics",
-        chapter: "Algebra",
-        difficulty: "hard",
-        q: "Expand (x + 3)².",
-        options: ["x² + 9", "x² + 6x + 9", "x² + 3x + 9", "x² + 6"],
-        answer: 1,
-        explanation: "(x + 3)² = x² + 6x + 9."
-      },
-
-      // CLASS 9 - PHYSICS
-      {
-        grade: "9",
-        subject: "Physics",
-        chapter: "Physical Quantities",
-        difficulty: "easy",
-        q: "What is the SI unit of length?",
-        options: ["Kilogram", "Second", "Metre", "Newton"],
-        answer: 2,
-        explanation: "The SI base unit of length is the metre."
-      },
-      {
-        grade: "9",
-        subject: "Physics",
-        chapter: "Motion",
-        difficulty: "medium",
-        q: "What is the formula for speed?",
-        options: [
-          "Distance × Time",
-          "Distance ÷ Time",
-          "Time ÷ Distance",
-          "Mass × Acceleration"
-        ],
-        answer: 1,
-        explanation: "Speed is calculated by dividing distance by time."
-      },
-      {
-        grade: "9",
-        subject: "Physics",
-        chapter: "Motion",
-        difficulty: "hard",
-        q: "A car travels 100 metres in 5 seconds. What is its average speed?",
-        options: ["10 m/s", "15 m/s", "20 m/s", "25 m/s"],
-        answer: 2,
-        explanation: "Average speed = 100 ÷ 5 = 20 m/s."
-      },
-
-      // CLASS 9 - CHEMISTRY
-      {
-        grade: "9",
-        subject: "Chemistry",
-        chapter: "Atoms and Molecules",
-        difficulty: "easy",
-        q: "What is the chemical symbol for oxygen?",
-        options: ["Ox", "O", "Oy", "Og"],
-        answer: 1,
-        explanation: "The chemical symbol for oxygen is O."
-      },
-      {
-        grade: "9",
-        subject: "Chemistry",
-        chapter: "Atoms and Molecules",
-        difficulty: "medium",
-        q: "What is the charge of a proton?",
-        options: ["Negative", "Positive", "Neutral", "Variable"],
-        answer: 1,
-        explanation: "A proton has a positive electric charge."
-      },
-      {
-        grade: "9",
-        subject: "Chemistry",
-        chapter: "Atoms and Molecules",
-        difficulty: "hard",
-        q: "What is the atomic number of carbon?",
-        options: ["4", "6", "8", "12"],
-        answer: 1,
-        explanation: "Carbon has 6 protons, so its atomic number is 6."
-      },
-
-      // CLASS 9 - BIOLOGY
-      {
-        grade: "9",
-        subject: "Biology",
-        chapter: "Cell Biology",
-        difficulty: "easy",
-        q: "What is the basic unit of life?",
-        options: ["Organ", "Tissue", "Cell", "Organ system"],
-        answer: 2,
-        explanation: "The cell is the basic structural and functional unit of life."
-      },
-      {
-        grade: "9",
-        subject: "Biology",
-        chapter: "Cell Biology",
-        difficulty: "medium",
-        q: "Which organelle is commonly called the powerhouse of the cell?",
-        options: ["Nucleus", "Mitochondrion", "Ribosome", "Vacuole"],
-        answer: 1,
-        explanation: "Mitochondria produce much of the usable energy in cells."
-      },
-      {
-        grade: "9",
-        subject: "Biology",
-        chapter: "Cell Biology",
-        difficulty: "hard",
-        q: "Which structure controls the movement of substances into and out of a cell?",
-        options: ["Cell membrane", "Nucleus", "Chromosome", "Nucleolus"],
-        answer: 0,
-        explanation: "The cell membrane regulates the movement of substances."
-      },
-
-      // CLASS 10 - MATHEMATICS
-      {
-        grade: "10",
-        subject: "Mathematics",
-        chapter: "Quadratic Equations",
-        difficulty: "easy",
-        q: "What is the highest power in a quadratic equation?",
-        options: ["1", "2", "3", "4"],
-        answer: 1,
-        explanation: "A quadratic equation has degree 2."
-      },
-      {
-        grade: "10",
-        subject: "Mathematics",
-        chapter: "Quadratic Equations",
-        difficulty: "medium",
-        q: "Solve x² = 25.",
-        options: ["x = 5 only", "x = −5 only", "x = ±5", "x = 25"],
-        answer: 2,
-        explanation: "Both 5² and (−5)² equal 25."
-      },
-      {
-        grade: "10",
-        subject: "Mathematics",
-        chapter: "Quadratic Equations",
-        difficulty: "hard",
-        q: "What is the discriminant of ax² + bx + c = 0?",
-        options: ["b² − 4ac", "b² + 4ac", "a² − 4bc", "4ac − b"],
-        answer: 0,
-        explanation: "The discriminant is b² − 4ac."
-      },
-
-      // CLASS 10 - PHYSICS
-      {
-        grade: "10",
-        subject: "Physics",
-        chapter: "Electricity",
-        difficulty: "easy",
-        q: "What is the SI unit of electric current?",
-        options: ["Volt", "Ohm", "Ampere", "Watt"],
-        answer: 2,
-        explanation: "Electric current is measured in amperes."
-      },
-      {
-        grade: "10",
-        subject: "Physics",
-        chapter: "Electricity",
-        difficulty: "medium",
-        q: "Which formula represents Ohm's law?",
-        options: ["V = IR", "P = IV²", "I = VR", "R = VI"],
-        answer: 0,
-        explanation: "Ohm's law states that V = IR under constant physical conditions."
-      },
-      {
-        grade: "10",
-        subject: "Physics",
-        chapter: "Electricity",
-        difficulty: "hard",
-        q: "A 12 V battery is connected across a 4 Ω resistor. What current flows?",
-        options: ["2 A", "3 A", "4 A", "48 A"],
-        answer: 1,
-        explanation: "Using I = V/R, current = 12/4 = 3 A."
-      },
-
-      // CLASS 10 - CHEMISTRY
-      {
-        grade: "10",
-        subject: "Chemistry",
-        chapter: "Chemical Reactions",
-        difficulty: "easy",
-        q: "What is the chemical formula of water?",
-        options: ["CO₂", "O₂", "H₂O", "NaCl"],
-        answer: 2,
-        explanation: "A water molecule contains two hydrogen atoms and one oxygen atom."
-      },
-      {
-        grade: "10",
-        subject: "Chemistry",
-        chapter: "Chemical Reactions",
-        difficulty: "medium",
-        q: "What is a reaction called when heat is released?",
-        options: ["Endothermic", "Exothermic", "Neutral", "Reversible only"],
-        answer: 1,
-        explanation: "An exothermic reaction releases energy, often as heat."
-      },
-      {
-        grade: "10",
-        subject: "Chemistry",
-        chapter: "Chemical Reactions",
-        difficulty: "hard",
-        q: "What is the coefficient of O₂ when this equation is balanced: H₂ + O₂ → H₂O?",
-        options: ["1", "2", "3", "4"],
-        answer: 0,
-        explanation: "The balanced equation is 2H₂ + O₂ → 2H₂O, so the O₂ coefficient is 1."
-      },
-
-      // CLASS 10 - BIOLOGY
-      {
-        grade: "10",
-        subject: "Biology",
-        chapter: "Homeostasis",
-        difficulty: "easy",
-        q: "Which organ pumps blood around the human body?",
-        options: ["Lungs", "Heart", "Kidney", "Stomach"],
-        answer: 1,
-        explanation: "The heart pumps blood through the circulatory system."
-      },
-      {
-        grade: "10",
-        subject: "Biology",
-        chapter: "Homeostasis",
-        difficulty: "medium",
-        q: "Which organs filter waste from the blood to form urine?",
-        options: ["Lungs", "Kidneys", "Pancreas", "Intestines"],
-        answer: 1,
-        explanation: "The kidneys filter blood and help regulate water and salt balance."
-      },
-      {
-        grade: "10",
-        subject: "Biology",
-        chapter: "Homeostasis",
-        difficulty: "hard",
-        q: "What is the functional unit of the kidney?",
-        options: ["Neuron", "Nephron", "Alveolus", "Villus"],
-        answer: 1,
-        explanation: "The nephron is the kidney's basic functional unit."
-      },
-
-      // CLASS 11 - PHYSICS
-      {
-        grade: "11",
-        subject: "Physics",
-        chapter: "Vectors",
-        difficulty: "easy",
-        q: "Which quantity has both magnitude and direction?",
-        options: ["Mass", "Time", "Vector", "Temperature"],
-        answer: 2,
-        explanation: "A vector quantity has magnitude and direction."
-      },
-      {
-        grade: "11",
-        subject: "Physics",
-        chapter: "Vectors",
-        difficulty: "medium",
-        q: "What is the magnitude of a vector with perpendicular components 3 and 4?",
-        options: ["5", "7", "12", "25"],
-        answer: 0,
-        explanation: "Magnitude = √(3² + 4²) = √25 = 5."
-      },
-      {
-        grade: "11",
-        subject: "Physics",
-        chapter: "Vectors",
-        difficulty: "hard",
-        q: "The dot product of two perpendicular vectors is:",
-        options: ["1", "−1", "0", "Their product"],
-        answer: 2,
-        explanation: "A · B = |A||B| cos θ. At 90°, cos 90° = 0."
-      },
-
-      // CLASS 11 - MATHEMATICS
-      {
-        grade: "11",
-        subject: "Mathematics",
-        chapter: "Functions",
-        difficulty: "easy",
-        q: "What is f(2) if f(x) = x + 3?",
-        options: ["2", "3", "5", "6"],
-        answer: 2,
-        explanation: "Substitute x = 2: f(2) = 2 + 3 = 5."
-      },
-      {
-        grade: "11",
-        subject: "Mathematics",
-        chapter: "Functions",
-        difficulty: "medium",
-        q: "What is the domain of f(x) = x² over the real numbers?",
-        options: ["Only positive numbers", "All real numbers", "Only integers", "Only zero"],
-        answer: 1,
-        explanation: "Any real number can be substituted for x in x²."
-      },
-      {
-        grade: "11",
-        subject: "Mathematics",
-        chapter: "Functions",
-        difficulty: "hard",
-        q: "If f(x) = 2x − 1, what is f(3)?",
-        options: ["4", "5", "6", "7"],
-        answer: 1,
-        explanation: "f(3) = 2(3) − 1 = 5."
-      },
-
-      // CLASS 12 - PHYSICS
-      {
-        grade: "12",
-        subject: "Physics",
-        chapter: "Electrostatics",
-        difficulty: "easy",
-        q: "What type of charge does an electron have?",
-        options: ["Positive", "Negative", "Neutral", "No charge ever"],
-        answer: 1,
-        explanation: "An electron has a negative electric charge."
-      },
-      {
-        grade: "12",
-        subject: "Physics",
-        chapter: "Electrostatics",
-        difficulty: "medium",
-        q: "What is the SI unit of electric charge?",
-        options: ["Ampere", "Coulomb", "Volt", "Ohm"],
-        answer: 1,
-        explanation: "Electric charge is measured in coulombs."
-      },
-      {
-        grade: "12",
-        subject: "Physics",
-        chapter: "Electrostatics",
-        difficulty: "hard",
-        q: "According to Coulomb's law, force is proportional to:",
-        options: [
-          "The sum of charges",
-          "The product of charges divided by distance squared",
-          "Distance squared only",
-          "Mass times acceleration only"
-        ],
-        answer: 1,
-        explanation: "Coulomb's law gives F proportional to |q₁q₂|/r²."
-      },
-
-      // CLASS 12 - CHEMISTRY
-      {
-        grade: "12",
-        subject: "Chemistry",
-        chapter: "Chemical Equilibrium",
-        difficulty: "easy",
-        q: "What does a reversible reaction use as its symbol?",
-        options: ["→", "←", "⇌", "×"],
-        answer: 2,
-        explanation: "The ⇌ symbol represents a reversible reaction."
-      },
-      {
-        grade: "12",
-        subject: "Chemistry",
-        chapter: "Chemical Equilibrium",
-        difficulty: "medium",
-        q: "At equilibrium, the forward and reverse reaction rates are:",
-        options: ["Always zero", "Equal", "Always different", "Infinite"],
-        answer: 1,
-        explanation: "At dynamic equilibrium, the forward and reverse reaction rates are equal."
-      },
-      {
-        grade: "12",
-        subject: "Chemistry",
-        chapter: "Chemical Equilibrium",
-        difficulty: "hard",
-        q: "What does a catalyst do to the equilibrium constant?",
-        options: [
-          "Increases it",
-          "Decreases it",
-          "Does not change it",
-          "Makes it zero"
-        ],
-        answer: 2,
-        explanation: "A catalyst speeds up both directions and does not change the equilibrium constant at a fixed temperature."
-      },
-
-      // CLASS 12 - BIOLOGY
-      {
-        grade: "12",
-        subject: "Biology",
-        chapter: "Genetics",
-        difficulty: "easy",
-        q: "What molecule carries genetic information in most living organisms?",
-        options: ["DNA", "Starch", "Glucose", "Water"],
-        answer: 0,
-        explanation: "DNA stores hereditary information in most living organisms."
-      },
-      {
-        grade: "12",
-        subject: "Biology",
-        chapter: "Genetics",
-        difficulty: "medium",
-        q: "What is a gene?",
-        options: [
-          "A type of blood cell",
-          "A segment of DNA associated with a functional product",
-          "A digestive enzyme only",
-          "A cell membrane"
-        ],
-        answer: 1,
-        explanation: "A gene is a DNA sequence that contributes to a functional product or trait."
-      },
-      {
-        grade: "12",
-        subject: "Biology",
-        chapter: "Genetics",
-        difficulty: "hard",
-        q: "If an organism has genotype Aa, what is it called?",
-        options: ["Homozygous dominant", "Homozygous recessive", "Heterozygous", "Asexual"],
-        answer: 2,
-        explanation: "Aa has two different alleles, so the genotype is heterozygous."
-      }
-    ];
-
-    const $ = id => document.getElementById(id);
-
-    let questions = [];
-    let current = 0;
-    let score = 0;
-    let answered = false;
-
-    function updateSubjects() {
-      const grade = $("classSelect").value;
-
-      const subjects = [...new Set(
-        bank
-          .filter(q => q.grade === grade)
-          .map(q => q.subject)
-      )];
-
-      $("subjectSelect").innerHTML = "";
-
-      subjects.forEach(subject => {
-        const option = document.createElement("option");
-        option.value = subject;
-        option.textContent = subject;
-        $("subjectSelect").appendChild(option);
-      });
-
-      updateChapters();
-    }
-
-    function updateChapters() {
-      const grade = $("classSelect").value;
-      const subject = $("subjectSelect").value;
-
-      const chapters = [...new Set(
-        bank
-          .filter(q => q.grade === grade && q.subject === subject)
-          .map(q => q.chapter)
-      )];
-
-      $("chapterSelect").innerHTML =
-        '<option value="all">All Chapters</option>';
-
-      chapters.forEach(chapter => {
-        const option = document.createElement("option");
-        option.value = chapter;
-        option.textContent = chapter;
-        $("chapterSelect").appendChild(option);
-      });
-
-      updateCount();
-    }
-
-    function getQuestions() {
-      const grade = $("classSelect").value;
-      const subject = $("subjectSelect").value;
-      const chapter = $("chapterSelect").value;
-      const difficulty = $("difficultySelect").value;
-
-      return bank.filter(q =>
-        q.grade === grade &&
-        q.subject === subject &&
-        (chapter === "all" || q.chapter === chapter) &&
-        (difficulty === "all" || q.difficulty === difficulty)
-      );
-    }
-
-    function updateCount() {
-      const count = getQuestions().length;
-
-      $("questionCount").textContent =
-        count + (count === 1 ? " question available." : " questions available.");
-
-      $("startBtn").disabled = count === 0;
-    }
-
-    function startQuiz() {
-      questions = getQuestions();
-
-      if (questions.length === 0) {
-        alert("No questions found. Please choose another selection.");
-        return;
-      }
-
-      current = 0;
-      score = 0;
-      answered = false;
-
-      $("setup").classList.add("hidden");
-      $("result").classList.add("hidden");
-      $("quiz").classList.remove("hidden");
-
-      showQuestion();
-    }
-
-    function showQuestion() {
-      answered = false;
-
-      const q = questions[current];
-
-      $("questionNumber").textContent =
-        "Question " + (current + 1) + " of " + questions.length;
-
-      $("progressBar").style.width =
-        ((current / questions.length) * 100) + "%";
-
-      $("difficultyLabel").textContent =
-        q.difficulty.charAt(0).toUpperCase() + q.difficulty.slice(1);
-
-      $("difficultyLabel").className = q.difficulty;
-
-      $("questionText").textContent = q.q;
-      $("options").innerHTML = "";
-      $("feedback").textContent = "";
-      $("explanation").textContent = "";
-
-      $("nextBtn").disabled = true;
-
-      q.options.forEach((optionText, index) => {
-        const button = document.createElement("button");
-
-        button.className = "option";
-        button.textContent =
-          String.fromCharCode(65 + index) + ". " + optionText;
-
-        button.addEventListener("click", () => checkAnswer(index));
-
-        $("options").appendChild(button);
-      });
-
-      $("nextBtn").textContent =
-        current === questions.length - 1
-          ? "See Results"
-          : "Next Question";
-    }
-
-    function checkAnswer(selectedIndex) {
-      if (answered) return;
-
-      answered = true;
-
-      const q = questions[current];
-      const buttons = $("options").querySelectorAll("button");
-
-      buttons.forEach(button => {
-        button.disabled = true;
-      });
-
-      buttons[q.answer].classList.add("correct");
-
-      if (selectedIndex === q.answer) {
-        score++;
-        $("feedback").textContent = "Correct! Well done.";
-        $("feedback").style.color = "#16833f";
-      } else {
-        buttons[selectedIndex].classList.add("wrong");
-        $("feedback").textContent =
-          "Incorrect. The correct answer is " +
-          q.options[q.answer] + ".";
-        $("feedback").style.color = "#c52c2c";
-      }
-
-      $("explanation").textContent = "Explanation: " + q.explanation;
-      $("nextBtn").disabled = false;
-    }
-
-    function nextQuestion() {
-      if (!answered) return;
-
-      current++;
-
-      if (current < questions.length) {
-        showQuestion();
-      } else {
-        showResults();
-      }
-    }
-
-    function showResults() {
-      $("quiz").classList.add("hidden");
-      $("result").classList.remove("hidden");
-
-      const percentage = Math.round((score / questions.length) * 100);
-
-      $("scoreText").textContent =
-        "Your score: " + score + " out of " + questions.length +
-        " (" + percentage + "%)";
-
-      if (percentage >= 80) {
-        $("resultMessage").textContent =
-          "Excellent work! Keep practising to stay sharp.";
-      } else if (percentage >= 50) {
-        $("resultMessage").textContent =
-          "Good effort! Review the explanations and try again.";
-      } else {
-        $("resultMessage").textContent =
-          "Keep learning! Practise more questions to improve your score.";
-      }
-    }
-
-    function backToSettings() {
-      $("quiz").classList.add("hidden");
-      $("result").classList.add("hidden");
-      $("setup").classList.remove("hidden");
-      updateCount();
-    }
-
-    $("classSelect").addEventListener("change", updateSubjects);
-    $("subjectSelect").addEventListener("change", updateChapters);
-    $("chapterSelect").addEventListener("change", updateCount);
-    $("difficultySelect").addEventListener("change", updateCount);
-
-    $("startBtn").addEventListener("click", startQuiz);
-    $("nextBtn").addEventListener("click", nextQuestion);
-    $("quitBtn").addEventListener("click", backToSettings);
-    $("retryBtn").addEventListener("click", startQuiz);
-    $("settingsBtn").addEventListener("click", backToSettings);
-
-    updateSubjects();
-  </script>
-
+<header>
+<h1>Punjab Board MCQs</h1>
+<p>Free practice for Classes 9–12</p>
+</header>
+
+<main>
+<section class="card">
+<h2>Choose Your Practice</h2>
+<div class="filters">
+<label>Class
+<select id="classSelect">
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+<option value="11">Class 11</option>
+<option value="12">Class 12</option>
+</select>
+</label>
+
+<label>Subject
+<select id="subjectSelect"></select>
+</label>
+
+<label>Chapter
+<select id="chapterSelect">
+<option value="all">All Chapters</option>
+</select>
+</label>
+
+<label>Difficulty
+<select id="difficultySelect">
+<option value="all">All Levels</option>
+<option value="Easy">Easy</option>
+<option value="Medium">Medium</option>
+<option value="Hard">Hard</option>
+</select>
+</label>
+</div>
+
+<p id="questionCount"></p>
+<button id="startBtn" class="primary">Start Practice</button>
+<p class="note">These are starter sample questions. Add more verified Punjab Board MCQs to the question bank in the code.</p>
+</section>
+
+<section id="quizPanel" class="card hidden">
+<div class="top">
+<span id="progress"></span>
+<span id="scoreLabel">Score: 0</span>
+<span id="difficultyTag"></span>
+</div>
+<div id="questionText"></div>
+<div id="options"></div>
+<div id="feedback" class="hidden"></div>
+<div class="actions">
+<button id="nextBtn" class="primary" disabled>Next Question</button>
+<button id="quitBtn" class="secondary">Back</button>
+</div>
+</section>
+
+<section id="resultPanel" class="card hidden">
+<h2>Practice Complete!</h2>
+<h2 id="finalScore"></h2>
+<p id="resultMessage"></p>
+<div class="actions">
+<button id="againBtn" class="primary">Try Again</button>
+<button id="changeBtn" class="secondary">Change Filters</button>
+</div>
+</section>
+</main>
+
+<footer>Keep learning. Keep improving.</footer>
+
+<script>
+// Add more questions inside this list.
+// Keep the same structure for each question.
+const bank = [
+{cl:9,s:"Physics",c:"Motion",d:"Easy",q:"What is the SI unit of speed?",o:["Metre","Metre per second","Second","Kilogram"],a:1,e:"Speed is measured in metres per second (m/s)."},
+{cl:9,s:"Physics",c:"Physical Quantities",d:"Easy",q:"Which instrument measures the diameter of a thin wire accurately?",o:["Metre rule","Stopwatch","Screw gauge","Thermometer"],a:2,e:"A screw gauge measures small diameters accurately."},
+{cl:9,s:"Chemistry",c:"Atoms",d:"Easy",q:"What is the smallest unit of an element?",o:["Atom","Mixture","Solution","Compound"],a:0,e:"An atom is the smallest unit of an element."},
+{cl:9,s:"Biology",c:"Cell Biology",d:"Easy",q:"Which cell structure controls most cell activities?",o:["Cell wall","Nucleus","Vacuole","Cytoplasm"],a:1,e:"The nucleus helps control cell activities."},
+{cl:9,s:"Mathematics",c:"Real Numbers",d:"Medium",q:"Which number is irrational?",o:["1/2","0.25","√2","4"],a:2,e:"√2 cannot be written as a ratio of two integers."},
+{cl:9,s:"English",c:"Grammar",d:"Easy",q:"Choose the correct plural of child.",o:["Childs","Childes","Children","Childrens"],a:2,e:"The plural of child is children."},
+
+{cl:10,s:"Physics",c:"Electricity",d:"Easy",q:"What is the SI unit of electric current?",o:["Volt","Ohm","Ampere","Watt"],a:2,e:"Electric current is measured in amperes."},
+{cl:10,s:"Physics",c:"Light",d:"Medium",q:"A convex lens is a:",o:["Diverging lens","Converging lens","Plane mirror","Prism"],a:1,e:"A convex lens converges parallel light rays."},
+{cl:10,s:"Chemistry",c:"Chemical Reactions",d:"Easy",q:"A reaction that releases heat is:",o:["Endothermic","Exothermic","Neutral","Physical only"],a:1,e:"Exothermic reactions release heat."},
+{cl:10,s:"Biology",c:"Inheritance",d:"Easy",q:"The basic unit of inheritance is the:",o:["Tissue","Organ","Gene","Cell wall"],a:2,e:"Genes carry hereditary information."},
+{cl:10,s:"Mathematics",c:"Equations",d:"Easy",q:"What is the degree of a quadratic equation?",o:["1","2","3","4"],a:1,e:"A quadratic equation has highest power 2."},
+{cl:10,s:"English",c:"Grammar",d:"Medium",q:"Choose the passive voice: Ali wrote a letter.",o:["Ali writes a letter.","A letter was written by Ali.","Ali is writing.","A letter wrote Ali."],a:1,e:"The simple past passive uses was/were plus the past participle."},
+
+{cl:11,s:"Physics",c:"Vectors",d:"Easy",q:"A vector quantity has:",o:["Magnitude only","Direction only","Magnitude and direction","Neither"],a:2,e:"Vectors have both magnitude and direction."},
+{cl:11,s:"Chemistry",c:"Atomic Structure",d:"Easy",q:"Atomic number equals the number of:",o:["Neutrons","Protons","Shells","Molecules"],a:1,e:"Atomic number is the number of protons."},
+{cl:11,s:"Biology",c:"Biological Molecules",d:"Easy",q:"Proteins are made from:",o:["Fatty acids","Nucleotides","Amino acids","Water"],a:2,e:"Amino acids join together to form proteins."},
+{cl:11,s:"Mathematics",c:"Sets",d:"Easy",q:"A set with no elements is called:",o:["Universal set","Empty set","Equal set","Infinite set"],a:1,e:"An empty set has no elements."},
+{cl:11,s:"English",c:"Grammar",d:"Easy",q:"Choose the correct sentence.",o:["She go to school.","She going to school.","She goes to school.","She gone to school."],a:2,e:"She goes to school is correct simple present tense."},
+
+{cl:12,s:"Physics",c:"Electrostatics",d:"Easy",q:"What is the SI unit of electric charge?",o:["Ampere","Coulomb","Volt","Ohm"],a:1,e:"Electric charge is measured in coulombs."},
+{cl:12,s:"Chemistry",c:"Equilibrium",d:"Medium",q:"At chemical equilibrium, forward and reverse reaction rates are:",o:["Zero","Equal","Always increasing","Unequal"],a:1,e:"At dynamic equilibrium, the reaction rates are equal."},
+{cl:12,s:"Biology",c:"Homeostasis",d:"Easy",q:"Which organs filter blood to form urine?",o:["Heart","Lungs","Kidneys","Stomach"],a:2,e:"The kidneys filter blood and produce urine."},
+{cl:12,s:"Mathematics",c:"Integration",d:"Medium",q:"The integral of 1 with respect to x is:",o:["0","1","x + C","x² + C"],a:2,e:"The integral of 1 is x + C."},
+{cl:12,s:"English",c:"Grammar",d:"Easy",q:"What is the past participle of write?",o:["Writed","Wrote","Written","Writing"],a:2,e:"The forms are write, wrote, written."}
+];
+
+const $ = id => document.getElementById(id);
+let questions = [], index = 0, score = 0, answered = false;
+
+function getQuestions(){
+ return bank.filter(x =>
+  x.cl === Number($("classSelect").value) &&
+  x.s === $("subjectSelect").value &&
+  ($("chapterSelect").value === "all" || x.c === $("chapterSelect").value) &&
+  ($("difficultySelect").value === "all" || x.d === $("difficultySelect").value)
+ );
+}
+
+function renderSubjects(){
+ const old = $("subjectSelect").value;
+ const subjects = [...new Set(bank.filter(x=>x.cl===Number($("classSelect").value)).map(x=>x.s))].sort();
+ $("subjectSelect").innerHTML = subjects.map(s=>`<option>${s}</option>`).join("");
+ if(subjects.includes(old)) $("subjectSelect").value = old;
+ renderChapters();
+}
+
+function renderChapters(){
+ const old = $("chapterSelect").value;
+ const qs = bank.filter(x=>x.cl===Number($("classSelect").value)&&x.s===$("subjectSelect").value);
+ const chapters = [...new Set(qs.map(x=>x.c))].sort();
+ $("chapterSelect").innerHTML = '<option value="all">All Chapters</option>' +
+  chapters.map(c=>`<option>${c}</option>`).join("");
+ if(chapters.includes(old)) $("chapterSelect").value = old;
+ updateCount();
+}
+
+function updateCount(){
+ const n = getQuestions().length;
+ $("questionCount").textContent = n+" sample question"+(n===1?"":"s")+" available.";
+ $("startBtn").disabled = n===0;
+}
+
+function startPractice(){
+ questions = getQuestions().slice();
+ for(let i=questions.length-1;i>0;i--){
+  const j=Math.floor(Math.random()*(i+1));
+  [questions[i],questions[j]]=[questions[j],questions[i]];
+ }
+ index=0;score=0;
+ $("resultPanel").classList.add("hidden");
+ $("quizPanel").classList.remove("hidden");
+ $("scoreLabel").textContent="Score: 0";
+ renderQuestion();
+}
+
+function renderQuestion(){
+ answered=false;
+ const x=questions[index];
+ $("progress").textContent=`Question ${index+1} of ${questions.length}`;
+ $("scoreLabel").textContent="Score: "+score;
+ $("difficultyTag").textContent=x.d;
+ $("questionText").textContent=x.q;
+ $("options").innerHTML="";
+ $("feedback").className="hidden";
+ $("feedback").textContent="";
+ $("nextBtn").disabled=true;
+ $("nextBtn").textContent=index===questions.length-1?"See Results":"Next Question";
+ x.o.forEach((option,i)=>{
+  const b=document.createElement("button");
+  b.className="option";b.textContent=option;
+  b.addEventListener("click",()=>chooseAnswer(i,b,x));
+  $("options").appendChild(b);
+ });
+}
+
+function chooseAnswer(choice,button,x){
+ if(answered)return;
+ answered=true;
+ [...$("options").children].forEach((b,i)=>{
+  b.disabled=true;
+  if(i===x.a)b.classList.add("correct");
+ });
+ const f=$("feedback");
+ if(choice===x.a){
+  score++;
+  f.textContent="Correct! "+x.e;
+  f.className="good";
+ }else{
+  button.classList.add("wrong");
+  f.textContent="Incorrect. Correct answer: "+x.o[x.a]+". "+x.e;
+  f.className="bad";
+ }
+ $("scoreLabel").textContent="Score: "+score;
+ $("nextBtn").disabled=false;
+}
+
+function nextQuestion(){
+ if(!answered)return;
+ if(index<questions.length-1){index++;renderQuestion();}
+ else showResults();
+}
+
+function showResults(){
+ $("quizPanel").classList.add("hidden");
+ $("resultPanel").classList.remove("hidden");
+ const percent=Math.round(score/questions.length*100);
+ $("finalScore").textContent=`Your score: ${score}/${questions.length} (${percent}%)`;
+ $("resultMessage").textContent=percent>=80?"Excellent work!":percent>=50?"Good effort. Keep practising!":"Keep learning and try again!";
+}
+
+function backToFilters(){
+ $("quizPanel").classList.add("hidden");
+ $("resultPanel").classList.add("hidden");
+ window.scrollTo(0,0);
+}
+
+$("classSelect").addEventListener("change",renderSubjects);
+$("subjectSelect").addEventListener("change",renderChapters);
+$("chapterSelect").addEventListener("change",updateCount);
+$("difficultySelect").addEventListener("change",updateCount);
+$("startBtn").addEventListener("click",startPractice);
+$("nextBtn").addEventListener("click",nextQuestion);
+$("quitBtn").addEventListener("click",backToFilters);
+$("againBtn").addEventListener("click",startPractice);
+$("changeBtn").addEventListener("click",backToFilters);
+
+renderSubjects();
+</script>
 </body>
 </html>
